@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} MaryEng {% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- стиль меню -->
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+          background-color: #dadada;
+        }
+        
+        .topnav {
+          display: flex;
+          flex-direction: row; 
+          overflow: hidden;
+          justify-content: space-between;
+          align-items: center;
+          background-color: white;
+          box-shadow: #00000033 10px 10px 10px;
+          border-radius: 5px;
+          margin-top: 16px;
+          margin-left: 8px;
+          width: calc(100vw - 80px);
+          height: 64px;
+        }
+        
+        .topnav>li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:0px 24px;
+          color: #000000;
+          text-decoration: none;
+          font-size: 22px;
+          height: 72px;
+        }
+        .topnav>li a {
+          color: black;
+          text-decoration: none;
+        }
+        .topnav>li:first-child {
+          height: 55px;
+          padding: 0px;
+        }
+        .topnav li img{
+          height: 72px;
+        }            
+        .topnav li:hover {
+          background-color: #575757;
+          color: #ffffff;
+        }
+        
+        .active {
+          color: white;
+        }
+        
+        .topnav .icon {
+          display: none;
+        }
+        
+        @media screen and (max-width: 600px) {
+          .topnav {
+            border-radius: 0px;
+            margin: 0px;
+            padding:0px;
+            width: 100vw;
+          }
+          .topnav.responsive {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            height: fit-content;
+          }
+          .topnav li:not(:first-child) {
+            display: none;
+          }
+          .topnav li.icon {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 32px;
+            padding: 16px;
+            display: block;
+          }
+          .topnav li:first-child {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+          }
+          
+          .topnav.responsive li:not(:last-child) {
+            display: flex;
+            min-width: 100%;
+          }
+          .topnav.responsive li:first-child {
+            min-width: 10px;
+          }
+          .topnav.responsive li:nth-child(2) {
+            margin-top: 55px;          
+          }
+          .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+        }
+    </style>
+    <!-- //стиль меню -->
+
+    <!-- стиль футер -->
+      <style>
+          footer {
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #2e2e2e;
+            color: white;
+            width: 100%;
+            height: 400px;
+          }
+          
+      </style>
+      <!-- //стиль футер -->
+
+      <!-- стиль sidebar -->
+      <style>
+          .sidebar {
+            min-height: 100vh;
+            float: left;
+            width: 23vw;
+            min-width: 350px;
+            background-color: white;
+            padding-left:9px;
+
+            display: flex;
+            flex-direction: column; 
+            overflow: hidden;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: #00000033 10px 10px 10px;
+            border-radius: 5px;
+            margin-top: 0px;
+            margin-bottom: 12px;
+            margin-left: 8px;
+          }
+          @media screen and (max-width: 600px) {
+            .sidebar {
+              display: none;
+            }
+          }  
+      </style>
+      <!-- //стиль sidebar -->
+
+      <!-- стиль content -->
+      <style>
+          .content {
+            min-height: 100vh;
+            float: left;
+            width: calc(100vw - 30vw - 50px);
+          }
+          
+      </style>
+      <!-- //стиль content -->
+
+</head>
+<body>
+
+{% include 'include/header.html' %}
+
+<div class="sidebar">
+    {% block sidebar %}
+    {% endblock sidebar %}
+</div>
+
+<div class="content">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+{% block footer %}
+{% include 'include/footer.html' %}
+{% endblock footer %}
+
+<!-- скрипт меню -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<!-- //скрипт меню -->
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'english/base.html' %}
+
+{% block title %} lessons {% endblock title %}
+
+{% block content %} 
+    {% for lesson in lesson_list %}
+        {{ lesson.title }}
+    {% endfor %}
+{% endblock content %}
+
+</body>
+</html>
